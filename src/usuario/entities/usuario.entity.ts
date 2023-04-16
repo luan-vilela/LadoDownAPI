@@ -16,8 +16,8 @@ import {
   ManyToMany,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { IsArray } from 'class-validator';
 import Permission from 'src/auth/permissions/permission.enum';
+import { Pai } from 'src/pai/entities/pai.entity';
 
 @Entity('usuario')
 export class Usuario {
@@ -39,16 +39,12 @@ export class Usuario {
   @DeleteDateColumn()
   deleted_at: Date;
 
-  // @OneToOne(() => Vendedor, {
-  //   eager: true,
-  //   cascade: true,
-  // })
-  // @JoinColumn()
-  // vendedor: Vendedor;
-
-  // @ManyToMany(() => Permissao, { eager: true })
-  // @JoinTable()
-  // permissoes: Permissao[];
+  @OneToOne(() => Pai, {
+    eager: true,
+    cascade: true,
+  })
+  @JoinColumn()
+  pai: Pai;
 
   @Column({
     type: 'set',

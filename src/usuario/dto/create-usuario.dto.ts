@@ -12,6 +12,7 @@ import {
 import Permission from 'src/auth/permissions/permission.enum';
 import { MessagesHelper } from 'src/helpers/messages.helper';
 import { RegExHelpers } from 'src/helpers/regex.helper';
+import { Pai } from 'src/pai/entities/pai.entity';
 // import { Permissao } from 'src/permissao/entities/permissao.entity';
 // import { Vendedor } from 'src/vendedor/entities/vendedor.entity';
 
@@ -34,20 +35,11 @@ export class CreateUsuarioDto {
   }) // Validador de  senha forte, caso precise
   password: string;
 
-  // @ApiProperty({
-  //   example: '{"id": "32c809a9-e7af-4cc5-bb6b-dbfe6645d33a"}',
-  // })
-  // @IsObject()
-  // @IsNotEmpty()
-  // vendedor: Vendedor;
-
-  // @ApiProperty({
-  //   example: '[habilidade_1, habilidade_2]',
-  //   description: `Necessário para realização do ações no sistema`,
-  // })
-  // @IsArray()
-  // @Type(() => Permissao)
-  // permissoes: Permissao[];
+  @ApiProperty({
+    example: '{"id": "32c809a9-e7af-4cc5-bb6b-dbfe6645d33a"}',
+  })
+  @IsObject()
+  pai: Pai;
 
   @ApiProperty({
     example: '[habilidade_1, habilidade_2]',

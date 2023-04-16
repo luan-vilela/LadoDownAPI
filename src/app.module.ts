@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 // import { PermissaoModule } from './permissao/permissao.module';
 import { AuthModule } from './auth/auth.module';
 import { FotoModule } from './foto/foto.module';
+import { PaiModule } from './pai/pai.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { FotoModule } from './foto/foto.module';
     } as TypeOrmModuleOptions),
     AuthModule,
     FotoModule,
+    PaiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
