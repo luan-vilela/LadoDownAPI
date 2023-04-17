@@ -45,6 +45,7 @@ export class CreateUsuarioDto {
     example: '[habilidade_1, habilidade_2]',
     description: `Necessário para realização do ações no sistema`,
   })
+  @IsOptional()
   @IsArray({ message: MessagesHelper.PERMISSION_EMPTY })
   @IsEnum(Permission, {
     each: true,
