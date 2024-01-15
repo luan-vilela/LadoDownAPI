@@ -26,7 +26,7 @@ export class CreateUsuarioDto {
   email: string;
 
   @ApiProperty({
-    example: '123@abc',
+    example: '1234@Abc',
     description: `Necessário para realização do login/acesso ao sistema`,
   })
   @IsNotEmpty({ message: MessagesHelper.SENHA_EMPTY })

@@ -7,7 +7,8 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { FotoModule } from './foto/foto.module';
 import { PaiModule } from './pai/pai.module';
-
+import { ForumModule } from './forum/forum.module';
+import { ConteudoModule } from './conteudo/conteudo.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -24,6 +25,8 @@ import { PaiModule } from './pai/pai.module';
     AuthModule,
     FotoModule,
     PaiModule,
+    ForumModule,
+    ConteudoModule
   ],
   controllers: [AppController],
   providers: [AppService],
