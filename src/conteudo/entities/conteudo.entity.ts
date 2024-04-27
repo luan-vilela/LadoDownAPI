@@ -5,13 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
-  ManyToOne,
   DeleteDateColumn,
-  BeforeInsert,
   JoinColumn,
-  OneToMany,
-  JoinTable,
-  ManyToMany,
 } from "typeorm";
 import Permission from "src/auth/permissions/permission.enum";
 import { Pai } from "src/pai/entities/pai.entity";

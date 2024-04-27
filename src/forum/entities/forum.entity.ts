@@ -5,15 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
-  ManyToOne,
   DeleteDateColumn,
-  BeforeInsert,
   JoinColumn,
-  OneToMany,
-  JoinTable,
-  ManyToMany,
 } from "typeorm";
-import { hashSync } from "bcrypt";
 import Permission from "src/auth/permissions/permission.enum";
 import { Pai } from "src/pai/entities/pai.entity";
 
@@ -22,10 +16,10 @@ export class Forum {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ length: 30, nullable: false, unique: true })
+  @Column()
   nome: string;
 
-  @Column({ length: 70, nullable: false })
+  @Column()
   comentario: string;
 
   @Column()
