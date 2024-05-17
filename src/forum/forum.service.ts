@@ -45,4 +45,9 @@ export class ForumService {
     await this.forumRepository.findOneOrFail({ where: { id: id } });
     this.forumRepository.softDelete({ id });
   }
+
+  async updateComment(id: string, controle: number): Promise<void> {
+   const forum = await this.forumRepository.findOneOrFail({ where: { id: id } });
+    await this.forumRepository.update(id, { qtd_comentario: forum.qtd_comentario + controle });
+  }
 }

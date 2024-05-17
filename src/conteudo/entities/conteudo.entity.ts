@@ -4,32 +4,34 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToOne,
   DeleteDateColumn,
-  JoinColumn,
 } from "typeorm";
-import Permission from "src/auth/permissions/permission.enum";
-import { Pai } from "src/pai/entities/pai.entity";
 
 @Entity("conteudo")
 export class Conteudo {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
   tituloPrincipal: string;
 
   @Column()
-  imagemPequena: string;
+  subTitulo: string;
 
   @Column()
-  subTitulo: string;
+  imagemPequena: string;
 
   @Column()
   imagemGrande: string;
 
   @Column()
   descricao: string;
+
+  @Column()
+  subDescricao: string;
+
+  @Column()
+  referencia: string;
 
   @Column()
   tag: string;
@@ -45,18 +47,4 @@ export class Conteudo {
 
   @DeleteDateColumn()
   deleted_at: Date;
-
-  @OneToOne(() => Pai, {
-    eager: true,
-    cascade: true,
-  })
-  @JoinColumn()
-  pai: Pai;
-
-  @Column({
-    type: "set",
-    enum: Permission,
-    default: [],
-  })
-  permissions: Permission[];
 }
