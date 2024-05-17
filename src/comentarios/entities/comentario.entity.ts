@@ -5,9 +5,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  JoinColumn,
+  ManyToOne,
 } from "typeorm";
-@Entity("forum")
-export class Forum {
+import { Forum } from "src/forum/entities/forum.entity";
+
+@Entity("comentario")
+export class Comentario {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -15,17 +19,18 @@ export class Forum {
   nome: string;
 
   @Column()
-  pergunta: string;
+  comentario: string;
 
-  @Column({ default: 0 })
-  qtd_comentario: number;
-
-  @CreateDateColumn()
+  @CreateDateColumn() 
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
 
   @DeleteDateColumn()
-  deleted_at: Date;
+  deleted_at: Date;  
+
+  @ManyToOne(() => Forum)
+  @JoinColumn({ name: "forum_id", referencedColumnName: "id" }) 
+  forum: Forum;  
 }

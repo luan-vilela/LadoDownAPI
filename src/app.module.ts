@@ -9,6 +9,7 @@ import { FotoModule } from "./foto/foto.module";
 import { PaiModule } from "./pai/pai.module";
 import { ForumModule } from "./forum/forum.module";
 import { ConteudoModule } from "./conteudo/conteudo.module";
+import { ComentariosModule } from './comentarios/comentarios.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -27,6 +28,7 @@ import { ConteudoModule } from "./conteudo/conteudo.module";
     PaiModule,
     ForumModule,
     ConteudoModule,
+    ComentariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

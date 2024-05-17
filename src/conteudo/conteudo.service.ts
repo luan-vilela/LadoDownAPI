@@ -30,7 +30,7 @@ export class ConteudoService {
     return await this.conteudoRepository.save(user);
   }
 
-  async update(id: string, data: UpdateConteudoDto): Promise<Conteudo> {
+  async update(id: number, data: UpdateConteudoDto): Promise<Conteudo> {
     const conteudo = await this.conteudoRepository.preload({
       id: id,
       ...data,
@@ -41,7 +41,7 @@ export class ConteudoService {
     return this.conteudoRepository.save(conteudo);
   }
 
-  async destroy(id: string) {
+  async destroy(id: number) {
     await this.conteudoRepository.findOneOrFail({ where: { id: id } });
     this.conteudoRepository.softDelete({ id });
   }
