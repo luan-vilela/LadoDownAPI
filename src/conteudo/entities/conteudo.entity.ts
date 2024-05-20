@@ -15,22 +15,22 @@ export class Conteudo {
   @Column()
   tituloPrincipal: string;
 
-  @Column()
+  @Column({ type: "text" })
   subTitulo: string;
 
-  @Column()
+  @Column({ type: "text" })
   imagemPequena: string;
 
-  @Column()
+  @Column({ type: "text" })
   imagemGrande: string;
 
-  @Column()
+  @Column({ type: "text" })
   descricao: string;
 
-  @Column()
+  @Column({ type: "text" })
   subDescricao: string;
 
-  @Column()
+  @Column({ type: "text" })
   referencia: string;
 
   @Column()

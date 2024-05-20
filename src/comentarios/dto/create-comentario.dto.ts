@@ -15,7 +15,6 @@ export class CreateComentarioDto {
   })
   @IsString({ message: "Comentário deve ser uma string" })
   @IsNotEmpty({ message: "Comentário não pode ser vazio" })
-  @Length(1, 1000, { message: "Comentário deve ter entre 1 e 1000 caracteres" })
   comentario: string;
 
   @ApiProperty({

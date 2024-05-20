@@ -14,7 +14,7 @@ export class Forum {
   @Column()
   nome: string;
 
-  @Column()
+  @Column({ type: "text" })
   pergunta: string;
 
   @Column({ default: 0 })

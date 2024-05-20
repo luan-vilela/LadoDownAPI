@@ -18,19 +18,19 @@ export class Comentario {
   @Column()
   nome: string;
 
-  @Column()
+  @Column({ type: "text" })
   comentario: string;
 
-  @CreateDateColumn() 
+  @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
 
   @DeleteDateColumn()
-  deleted_at: Date;  
+  deleted_at: Date;
 
   @ManyToOne(() => Forum)
-  @JoinColumn({ name: "forum_id", referencedColumnName: "id" }) 
-  forum: Forum;  
+  @JoinColumn({ name: "forum_id", referencedColumnName: "id" })
+  forum: Forum;
 }
