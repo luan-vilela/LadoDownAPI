@@ -4,7 +4,6 @@ import { FindOneOptions, Repository } from "typeorm";
 import { CreateComentarioDto } from "./dto/create-comentario.dto";
 import { UpdateComentarioDto } from "./dto/update-comentario.dto";
 import { Comentario } from "./entities/comentario.entity";
-import { hashSync } from "bcrypt";
 import { ForumService } from "src/forum/forum.service";
 
 @Injectable()
@@ -48,11 +47,8 @@ export class ComentariosService {
 
   async store(data: CreateComentarioDto) {
     const comment = await this.comentarioRepository.create(data);
-
     const post = await this.comentarioRepository.save(comment);
-
     await this.updateForumComment(comment.forum.id, 1);
-
     return post;
   }
 
@@ -72,12 +68,18 @@ export class ComentariosService {
   }
 
   async destroy(id: string) {
-    const comment = await this.comentarioRepository.findOneOrFail({
-      where: { id: id },
-    });
-    console.log(comment);
-    // await this.updateForumComment(comment.forum.id, -1);
+    try {
+      const comment = await this.comentarioRepository.findOneOrFail({
+        where: { id: id },
+        relations: ['forum'],
+      });
 
-    this.comentarioRepository.softDelete({ id });
+      await this.updateForumComment(comment.forum.id, -1);
+      await this.comentarioRepository.softDelete({ id });
+
+      return { message: 'Comentario deleted and forum comments count updated successfully.' };
+    } catch (error) {
+      throw new NotFoundException(`Error deleting comentario or updating forum comments count: ${error.message}`);
+    }
   }
 }

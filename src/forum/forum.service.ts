@@ -4,7 +4,6 @@ import { FindOneOptions, Repository } from "typeorm";
 import { CreateForumDto } from "./dto/create-forum.dto";
 import { UpdateForumDto } from "./dto/update-forum.dto";
 import { Forum } from "./entities/forum.entity";
-import { hashSync } from "bcrypt";
 
 @Injectable()
 export class ForumService {
@@ -26,8 +25,8 @@ export class ForumService {
   }
 
   async store(data: CreateForumDto) {
-    const user = await this.forumRepository.create(data);
-    return await this.forumRepository.save(user);
+    const forum = this.forumRepository.create(data);
+    return await this.forumRepository.save(forum);
   }
 
   async update(id: string, data: UpdateForumDto): Promise<Forum> {
@@ -42,12 +41,35 @@ export class ForumService {
   }
 
   async destroy(id: string) {
-    await this.forumRepository.findOneOrFail({ where: { id: id } });
-    this.forumRepository.softDelete({ id });
+    try {
+      const forum = await this.forumRepository.findOneOrFail({
+        where: { id: id },
+      });
+
+      const newQtdComentario = forum.qtd_comentario - 1;
+      await this.forumRepository.update(id, {
+        qtd_comentario: newQtdComentario,
+      });
+
+      await this.forumRepository.softDelete({ id });
+
+      return {
+        message: "Forum deleted and comments count updated successfully.",
+      };
+    } catch (error) {
+      throw new Error(
+        `Error deleting forum or updating comments count: ${error.message}`
+      );
+    }
   }
 
   async updateComment(id: string, controle: number): Promise<void> {
-   const forum = await this.forumRepository.findOneOrFail({ where: { id: id } });
-    await this.forumRepository.update(id, { qtd_comentario: forum.qtd_comentario + controle });
+    const forum = await this.forumRepository.findOneOrFail({
+      where: { id: id },
+    });
+    await this.forumRepository.update(id, {
+      qtd_comentario: forum.qtd_comentario + controle,
+    });
   }
 }
+
