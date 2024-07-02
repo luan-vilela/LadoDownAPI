@@ -1,83 +1,77 @@
-### Documentação BACKEND API NESTJS
 
-### NEST JS 9.1.5
+# API LadoDown
 
-## Instalando dependencias
+<p align="center">
+	<img src="https://raw.githubusercontent.com/luan-vilela/LadoDown/main/src/assets/logo220x112.png" width="180" alt="Logo LadoDown" />
+</p>
 
-```bash
-$ npm install
-```
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com) [![build](https://github.com/aseprite/aseprite/actions/workflows/build.yml/badge.svg)](https://github.com/aseprite/aseprite/actions/workflows/build.yml) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://raw.githubusercontent.com/luan-vilela/LadoDown/main/LICENSE)
 
-## Rodando a aplicação localmente
-
-```bash
-# desenvolvimento
-$ npm run start
-
-# modo desenvolvedor
-$ npm run start:dev
-
-# modo produção
-$ npm run start:prod
-```
-
-## Modulo de teste unitário EM BREVE
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## BANCO DE DADOS
-
-esta sendo utilizado o MYsql<br><br>
-
-o modelo de conexao no arquivo .env é o abaixo<br><br>
-
-DB_HOST=localhost<br>
-DB_PORT=3306<br>
-DB_USERNAME=root<br>
-DB_PASSWORD=password<br>
-DB_DATABASE=primaza<br><br>
+LadoDown é um aplicativo voltado para o registro de informações de crianças com Síndrome de Down. Pais e responsáveis podem usar o aplicativo para acompanhar a curva de crescimento específica para SD, gerenciar vacinas, receber alertas, participar de fóruns e acessar conteúdos do blog.
 
 
-para facilitar a apliação em dev segue um modelo com o banco online para desenvolvimento<br><br>
+### Ferramentas Necessárias
 
-SERVER_PORT=3001<br>
-MODE=DEV<br>
-DB_HOST=db4free.net<br>
-DB_PORT=3306<br>
-DB_USERNAME=user123<br>
-DB_PASSWORD=123456789<br>
-DB_DATABASE=primaza1213<br>
-DB_SYNCHRONIZE=true<br>
-
-### Rotas e porta padrao
-
-por padrao a denifição da porta é a 3001
-
-## localhost:3001
-
-para visualização do swagger
-
-## /api
-
-# PRIMAZA-BACK-API
-
-### Gerar um hash para o  jwt segura, cuidado ao colocar  em produção não pode peder essa hash, se a hash for trocada terá que fazer update em todas as senhas salvas.
-
-```bash
-# Senha base64 de tamanho 32
-$ openssl rand -base64 32
-PY6AZ36rLe7lSxh5JI0L9QyyLd7D9GLgX4x1exVLWNY=
-
-```
+-   **Node.js** (versão 14 ou superior)
+-   **npm** (geralmente incluído com o Node.js) ou **Yarn** como gerenciador de pacotes
+-   **MYSQL** Qualquer um de sua preferência
+-   **NESTJS**
+-   **Git** 
 
 
-# BackLoveDown
+ ## Instalação 
+
+Para instalar a api LadoDown, siga os passos abaixo:
+
+    $ git clone https://github.com/luan-vilela/LadoDownAPI.git
+    $ cd ladodownapi
+    $ npm install
+    
+  ## Configuração do Ambiente
+
+Api LadoDown utiliza variáveis de ambiente para configurar a API. Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
+
+SECRET=Sua_chave_hash_jwt
+SERVER_PORT=3001
+DB_TYPE=mariadb
+DB_HOST=3.88.160.252
+DB_PORT=3306
+DB_USERNAME=user
+DB_PASSWORD=123
+DB_DATABASE=myDataBase
+DB_SYNCHRONIZE=false
+
+
+Gerar um hash para o jwt segura, cuidado ao colocar  em produção não pode peder essa hash, se a hash for trocada terá que fazer update em todas as senhas salvas.
+
+`$ openssl rand -base64 32`
+
+
+## Executar e Depurar
+
+Para iniciar o servidor de desenvolvimento, utilize o comando:
+
+`$ npm run start ` 
+
+Para compilar o servidor.
+
+`$ npm run build`
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você tiver sugestões de melhorias ou encontrar bugs, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+1.  Faça um fork do projeto.
+2.  Crie uma nova branch (`git checkout -b feature/nova-feature`).
+3.  Faça suas modificações.
+4.  Commit suas mudanças (`git commit -am 'Adiciona nova feature'`).
+5.  Push para a branch (`git push origin feature/nova-feature`).
+6.  Abra um Pull Request.
+
+## Contato
+
+Para suporte ou feedback, você pode entrar em contato através de luan.vilela.comp@gmail.com 
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](https://raw.githubusercontent.com/luan-vilela/LadoDown/main/LICENSE) para mais detalhes.
