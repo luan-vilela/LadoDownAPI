@@ -23,39 +23,43 @@ LadoDown é um aplicativo voltado para o registro de informações de crianças 
 
 Para instalar a api LadoDown, siga os passos abaixo:
 
-    $ git clone https://github.com/luan-vilela/LadoDownAPI.git
-    $ cd ladodownapi
-    $ npm install
+    git clone https://github.com/luan-vilela/LadoDownAPI.git
+    cd ladodownapi
+    npm install
     
   ## Configuração do Ambiente
 
 Api LadoDown utiliza variáveis de ambiente para configurar a API. Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
 
-SECRET=Sua_chave_hash_jwt
-SERVER_PORT=3001
-DB_TYPE=mariadb
-DB_HOST=3.88.160.252
-DB_PORT=3306
-DB_USERNAME=user
-DB_PASSWORD=123
-DB_DATABASE=myDataBase
-DB_SYNCHRONIZE=false
+.env
+
+	SECRET=Sua_chave_hash_jwt
+   	SERVER_PORT= 3001
+  	DB_TYPE=mariadb
+	DB_HOST=localhost
+	DB_PORT=3306
+	DB_USERNAME=user
+	DB_PASSWORD=123
+	DB_DATABASE=myDataBase
+	DB_SYNCHRONIZE=false
+
+   
 
 
 Gerar um hash para o jwt segura, cuidado ao colocar  em produção não pode peder essa hash, se a hash for trocada terá que fazer update em todas as senhas salvas.
 
-`$ openssl rand -base64 32`
+    openssl rand -base64 32
 
 
 ## Executar e Depurar
 
 Para iniciar o servidor de desenvolvimento, utilize o comando:
 
-`$ npm run start ` 
+    npm run start
 
 Para compilar o servidor.
 
-`$ npm run build`
+    npm run build
 
 ## Contribuição
 
